@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import utils.HeaderMenuItem;
 
 public abstract class BasePage {
@@ -11,6 +12,13 @@ public abstract class BasePage {
 
     public static void setDriver(WebDriver wd) {
         driver = wd;
+    }
+
+    @FindBy(xpath = "//div[@class='dialog-container']")
+    WebElement popUpMessage;
+
+    public boolean validatePopUpMessage(String text){
+        return isTextInElementPresent(popUpMessage, text);
     }
 
     public void pause(int time) {
@@ -50,5 +58,9 @@ public abstract class BasePage {
 
     public boolean isElementPresent(WebElement element) {
         return element.isDisplayed();
+    }
+
+    public boolean elementIsEnabled(WebElement element){
+        return element.isEnabled();
     }
 }
