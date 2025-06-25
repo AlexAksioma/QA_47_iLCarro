@@ -16,7 +16,7 @@ import java.time.LocalDate;
 public class ApplicationManager {
     private WebDriver driver;
 
-    public WebDriver getDriver(){
+    public WebDriver getDriver() {
         return driver;
     }
 
@@ -24,7 +24,7 @@ public class ApplicationManager {
 
 
     @BeforeMethod
-    public void setup(){
+    public void setup() {
         //logger.info("Start testing "+ LocalDate.now() +" ============================");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -35,10 +35,10 @@ public class ApplicationManager {
 
     }
 
-    @AfterMethod
-    public void tearDown(){
-        //if(driver != null)
-            //driver.quit();
+    @AfterMethod(enabled = false)
+    public void tearDown() {
+        if (driver != null)
+            driver.quit();
     }
 }
 /*
